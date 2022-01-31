@@ -11,9 +11,8 @@ public class Przyklad1 {
         final String password = "root";
         final String query = "Select * from Country;";
 
-        try {
-            Connection connection = DriverManager.getConnection(url, user, password);
-            Statement statement = connection.createStatement();
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement()) {
 
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -26,7 +25,5 @@ public class Przyklad1 {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 }
