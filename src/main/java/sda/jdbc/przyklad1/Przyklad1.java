@@ -10,6 +10,7 @@ public class Przyklad1 {
         final String user = "root";
         final String password = "root";
         final String query = "Select * from Country;";
+        final String query2 = "Select * from Address;";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
