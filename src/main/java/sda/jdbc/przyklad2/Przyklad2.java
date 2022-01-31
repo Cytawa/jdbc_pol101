@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class Przyklad2 {
 
     public static void main(String[] args) throws SQLException {
+        String id = "3 or 1=1";
         String query = "Select * from Address where add_id = ?";
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -17,7 +18,8 @@ public class Przyklad2 {
                 .getConnection()
                 .prepareStatement(query);
 
-        preparedStatement.setString(1, "3");
+        preparedStatement.setString(1, id);
+
 
         ResultSet resultSet = preparedStatement.executeQuery();
 
