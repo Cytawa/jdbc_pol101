@@ -10,7 +10,7 @@ public class DatabaseConnection {
     final String user = "root";
     final String password = "root";
 
-    private DatabaseConnection instance;
+    private static DatabaseConnection instance;
     private Connection connection;
 
     public DatabaseConnection() {
@@ -22,7 +22,7 @@ public class DatabaseConnection {
         }
     }
 
-    public DatabaseConnection getInstance() throws SQLException {
+    public static DatabaseConnection getInstance() throws SQLException {
         if (instance == null) {
             instance = new DatabaseConnection();
         } else if (instance.getConnection().isClosed()) {

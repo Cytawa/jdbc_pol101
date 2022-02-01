@@ -33,6 +33,6 @@ public class Zadanie1 {
             System.out.print(resultSet.getString("FN")+" ");
             System.out.println(resultSet.getString("LN"));
         }
-
+        databaseConnection.getConnection().close();
     }
 }
