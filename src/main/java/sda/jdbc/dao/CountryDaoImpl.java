@@ -25,12 +25,6 @@ public class CountryDaoImpl implements  CountryDao{
         return countries;
     }
 
-    private Country mapResultSetToCountry(ResultSet resultSet) throws SQLException {
-        return new Country(resultSet.getInt("CO_ID"),
-                resultSet.getString("CO_NAME"),
-                resultSet.getString("CO_ALIAS"));
-    }
-
     @Override
     public Country findById(int id) {
         return null;
@@ -48,5 +42,11 @@ public class CountryDaoImpl implements  CountryDao{
 
     private Connection getConnection() {
         return new DatabaseConnection().getConnection();
+    }
+
+    private Country mapResultSetToCountry(ResultSet resultSet) throws SQLException {
+        return new Country(resultSet.getInt("CO_ID"),
+                resultSet.getString("CO_NAME"),
+                resultSet.getString("CO_ALIAS"));
     }
 }
