@@ -15,6 +15,9 @@ public class CountryDaoImpl implements  CountryDao{
     private final String selectAll = "select * from Country;";
     private final String selectById = "select * from Country where CO_ID = ?;";
     public static final int CO_ID_PARAMETER_INDEX = 1;
+    private final String addNewCountry = "Insert into Country (CO_NAME, CO_ALIAS) values (?, ?);";
+    private final int CO_NAME_INDEX = 1;
+    private final int CO_ALIAS_INDEX = 2;
 
     @Override
     public List<Country> getAll() throws SQLException {
@@ -42,8 +45,13 @@ public class CountryDaoImpl implements  CountryDao{
     }
 
     @Override
-    public void addNewCountry(Country country) {
+    public void addNewCountry(Country country) throws SQLException {
+        PreparedStatement preparedStatement = getConnection().prepareStatement(addNewCountry);
 
+        preparedStatement.setString(CO_NAME_INDEX, country.getName());
+        preparedStatement.setString(CO_ALIAS_INDEX, country.getAlias());
+
+        preparedStatement.executeUpdate();
     }
 
     @Override
