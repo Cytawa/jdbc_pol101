@@ -11,5 +11,6 @@ public interface CountryDao {
     Country findById(int id) throws SQLException;
     void addNewCountry(Country country) throws SQLException;
     void deleteById(int id) throws SQLException;
+    void updateCountry(Country country) throws SQLException;
 
 }
