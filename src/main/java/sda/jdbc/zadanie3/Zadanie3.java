@@ -9,5 +9,6 @@ public class Zadanie3 {
     public static void main(String[] args) throws SQLException {
         CountryDao countryDao = new CountryDaoImpl();
         countryDao.getAll().forEach(country -> System.out.println(country.toString()));
+        System.out.println(countryDao.findById(2));
     }
 }

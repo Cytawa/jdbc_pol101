@@ -8,7 +8,7 @@ import java.util.List;
 public interface CountryDao {
 
     List<Country> getAll() throws SQLException;
-    Country findById(int id);
+    Country findById(int id) throws SQLException;
     void addNewCountry(Country country);
     void deleteById(int id);
 
