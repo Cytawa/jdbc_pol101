@@ -18,6 +18,8 @@ public class CountryDaoImpl implements  CountryDao{
     private final String addNewCountry = "Insert into Country (CO_NAME, CO_ALIAS) values (?, ?);";
     private final int CO_NAME_INDEX = 1;
     private final int CO_ALIAS_INDEX = 2;
+    private final String deleteById = "delete from Country where CO_ID = ?;";
+    private final int CO_ID_INDEX = 1;
 
     @Override
     public List<Country> getAll() throws SQLException {
@@ -55,8 +57,13 @@ public class CountryDaoImpl implements  CountryDao{
     }
 
     @Override
-    public void deleteById(int id) {
-
+    public void deleteById(int Id) throws SQLException {
+        if(findById(Id)!= null){
+            PreparedStatement preparedStatement = getConnection().prepareStatement(deleteById);
+            preparedStatement.setInt(CO_ID_INDEX, Id);
+            preparedStatement.executeUpdate();
+            preparedStatement.getConnection().close();
+        }
     }
 
     private Connection getConnection() {

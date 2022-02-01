@@ -12,5 +12,6 @@ public class Zadanie3 {
         countryDao.getAll().forEach(country -> System.out.println(country.toString()));
         System.out.println(countryDao.findById(2));
         countryDao.addNewCountry(new Country(null, "UK", "UK"));
+        countryDao.deleteById(6);
     }
 }
